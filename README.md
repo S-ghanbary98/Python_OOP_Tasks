@@ -97,26 +97,21 @@ class User:
 
 while True:
     age = input("How old are you?")
+    if age == "exit":
+        break
 
-    if int(age.isdigit()) and int(age) > 0:
-        license = None
-        while license == None:
-            license = input("Do you have a drivers licence? (yes/no)")
-            if license.lower() == 'yes':
-                license = True
-            elif license.lower() == 'no':
-                license = False
-            else:
-                license = None
+    license = input("Do you have a drivers licence? (yes/no)")
+    if license == "exit":
+        break
 
-
+    if int(age.isdigit()) and int(age) > 0 and license.lower() == 'yes' or license.lower() == 'no':
         user = User(int(age), license)
         print(user.drive_check())
         print(user.school_check())
         print(user.vote_check())
         print(user.drink_check())
         break
-    print("Enter a valid age please")
+    print("Please enter valid age/license information")
 
 
 ```
